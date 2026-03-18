@@ -71,6 +71,16 @@ Nas telas foi utilizado principalmente:
     - adição de produtos
     - categoria/preço selecionados nos filtros
 
+### Demonstrações
+<img width="180" height="861" alt="image" src="https://github.com/user-attachments/assets/7f2b0416-2e11-4184-b4f5-2053db33c2de" />
+<img width="180" height="860" alt="image" src="https://github.com/user-attachments/assets/7314d2b4-45c2-4e66-9e56-14b58a73f674" />
+<img width="180" height="861" alt="image" src="https://github.com/user-attachments/assets/39ab3673-69a1-4ce2-a604-3c5e263e370f" />
+
+Link do vídeo
+``` 
+https://drive.google.com/file/d/1ZV21PdYRzNtT873EztZULRHIL_Edf_PY/view?usp=sharing
+```
+
 ### Como a navegação foi organizada
 - **`Stack` no layout raiz** (`app/_layout.js` / `App.js`):
   - Define a pilha de telas e configurações globais.
