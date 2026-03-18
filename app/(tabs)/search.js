@@ -36,6 +36,37 @@ const RECENT_SEARCHES = ['Coxinha', 'Café', 'Suco'];
 
 // ─── ProductRow ───────────────────────────────────────────────────────────────
 
+function ProductRow({ item }) {
+    const [added, setAdded] = useState(false);
+
+    return (
+        <View style={styles.productRow}>
+            <Image source={{ uri: item.image }} style={styles.rowImage} resizeMode="cover" />
+            <View style={styles.rowInfo}>
+                <View style={styles.rowTopLine}>
+                    <Text style={styles.rowCategory}>{item.category}</Text>
+                    {item.discount && (
+                        <View style={styles.discountBadge}>
+                            <Text style={styles.discountText}>{item.discount}% OFF</Text>
+                        </View>
+                    )}
+                </View>
+                <Text style={styles.rowName} numberOfLines={1}>{item.name}</Text>
+                <Text style={styles.rowWeight}>{item.weight}</Text>
+                <View style={styles.rowFooter}>
+                    <Text style={styles.rowPrice}>R${item.price.toFixed(2)}</Text>
+                    <TouchableOpacity
+                        style={[styles.addBtn, added && styles.addBtnDone]}
+                        activeOpacity={0.8}
+                        onPress={() => { setAdded(true); setTimeout(() => setAdded(false), 800); }}
+                    >
+                        <Ionicons name={added ? 'checkmark' : 'add'} size={18} color="#fff" />
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </View>
+    );
+}
 
 // ─── SearchScreen ─────────────────────────────────────────────────────────────
 
