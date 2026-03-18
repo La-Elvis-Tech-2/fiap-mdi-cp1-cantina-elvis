@@ -63,12 +63,12 @@ Principais arquivos/pastas:
 - O layout global da navegação fica em `app/_layout.js`, usando `Stack` para controlar as telas.
 
 ### Hooks utilizados e para quê
-Na tela principal (`app/(tabs)/index.js`), foi utilizado principalmente:
+Nas telas foi utilizado principalmente:
 - **`useState`**
   - Controlar estado de UI, por exemplo:
     - andar selecionado (ex.: 5º / 7º andar)
     - texto da busca
-    - abertura/fechamento do modal de filtros
+    - adição de produtos
     - categoria/preço selecionados nos filtros
 
 ### Como a navegação foi organizada
