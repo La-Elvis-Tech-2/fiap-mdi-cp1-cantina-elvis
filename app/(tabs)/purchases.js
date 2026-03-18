@@ -390,7 +390,20 @@ export default function CartScreen() {
                                 ))}
                             </ScrollView>
                         </View>
+                        {/* Checkout Footer FIXO */}
+                        <View style={styles.checkoutFooter}>
+                            <View style={styles.checkoutSummary}>
+                                <Text style={styles.checkoutLabel}>Total</Text>
+                                <Text style={styles.checkoutTotal}>R${total.toFixed(2)}</Text>
+                            </View>
+                            <TouchableOpacity style={styles.checkoutBtn} onPress={() => setCheckoutSuccess(true)}>
+                                <Ionicons name="bag-check-outline" size={20} color={WHITE} />
+                                <Text style={styles.checkoutBtnText}>Finalizar Pedido</Text>
+                                <Ionicons name="arrow-forward" size={18} color={WHITE} />
+                            </TouchableOpacity>
+                        </View>
                     </ScrollView>
+
 
                 </>
             )}
