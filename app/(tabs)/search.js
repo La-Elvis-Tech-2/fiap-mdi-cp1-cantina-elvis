@@ -16,19 +16,15 @@ import { Ionicons } from '@expo/vector-icons';
 // ─── Mock Data ────────────────────────────────────────────────────────────────
 
 const ALL_PRODUCTS = [
-    { id: '1', name: 'Coxinha de Frango', weight: '120 gm.', price: 6.0, image: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=200&q=80', category: 'Lanches', discount: null },
-    { id: '2', name: 'Suco de Laranja', weight: '300 ml.', price: 8.0, image: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=200&q=80', category: 'Bebidas', discount: 10 },
-    { id: '3', name: 'Misto Quente', weight: '150 gm.', price: 9.5, image: 'https://images.unsplash.com/photo-1528736235302-52922df5c122?w=200&q=80', category: 'Lanches', discount: null },
-    { id: '4', name: 'Café Coado', weight: '200 ml.', price: 4.0, image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&q=80', category: 'Bebidas', discount: null },
-    { id: '5', name: 'Pão de Queijo', weight: '80 gm.', price: 5.0, image: 'https://images.unsplash.com/photo-1598182198871-d3f4ab4fd181?w=200&q=80', category: 'Lanches', discount: null },
-    { id: '6', name: 'Água Mineral', weight: '500 ml.', price: 3.5, image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=200&q=80', category: 'Bebidas', discount: null },
-    { id: '7', name: 'Brownie de Chocolate', weight: '90 gm.', price: 7.0, image: 'https://images.unsplash.com/photo-1564355808539-22fda35bed7e?w=200&q=80', category: 'Doces', discount: 15 },
-    { id: '8', name: 'Refrigerante Lata', weight: '350 ml.', price: 6.0, image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&q=80', category: 'Bebidas', discount: null },
-    { id: '9', name: 'Esfiha de Carne', weight: '100 gm.', price: 5.5, image: 'https://images.unsplash.com/photo-1514190051997-0f6f39ca5cde?w=200&q=80', category: 'Lanches', discount: null },
-    { id: '10', name: 'Vitamina de Banana', weight: '300 ml.', price: 9.0, image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=200&q=80', category: 'Bebidas', discount: null },
-    { id: '11', name: 'Wrap de Frango', weight: '200 gm.', price: 14.0, image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=200&q=80', category: 'Refeições', discount: null },
-    { id: '12', name: 'Bolo de Cenoura', weight: '100 gm.', price: 6.5, image: 'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=200&q=80', category: 'Doces', discount: null },
-];
+    { id: '1', name: 'Hambúrguer de Frango', weight: '120 gm.', price: 6.0, image: require('../../assets/burguer.jpg'), discount: null, category: 'lanches' },
+    { id: '2', name: 'Suco de Laranja', weight: '300 ml.', price: 8.0, image: require('../../assets/sucolaranj.jpg'), discount: 10, category: 'bebidas' },
+    { id: '3', name: 'Misto Quente', weight: '150 gm.', price: 9.5, image: require('../../assets/misto.jpg'), discount: null, category: 'lanches' },
+    { id: '4', name: 'Café Coado', weight: '200 ml.', price: 4.0, image: require('../../assets/cafe.jpg'), discount: null, category: 'bebidas' },
+    { id: '5', name: 'Hambúrguer X', weight: '80 gm.', price: 5.0,image: require('../../assets/burguer2.jpg'), discount: null, category: 'lanches' },
+    { id: '6', name: 'Água Mineral', weight: '500 ml.', price: 3.5, image: require('../../assets/agua.jpg'), discount: null, category: 'bebidas' },
+    { id: '7', name: 'Brownie de Chocolate', weight: '90 gm.', price: 7.0, image: require('../../assets/brownie.jpg'), discount: 15, category: 'doces' },
+    { id: '8', name: 'Refrigerante Lata', weight: '350 ml.', price: 6.0, image: require('../../assets/fanta.jpg'), discount: null, category: 'bebidas' },
+ ];
 
 const CATEGORIES = ['Todos', 'Lanches', 'Bebidas', 'Refeições', 'Doces'];
 
@@ -41,7 +37,7 @@ function ProductRow({ item }) {
 
     return (
         <View style={styles.productRow}>
-            <Image source={{ uri: item.image }} style={styles.rowImage} resizeMode="cover" />
+            <Image source={item.image} style={styles.rowImage} resizeMode="cover" />
             <View style={styles.rowInfo}>
                 <View style={styles.rowTopLine}>
                     <Text style={styles.rowCategory}>{item.category}</Text>

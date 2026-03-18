@@ -30,10 +30,10 @@ const GREEN = '#4CAF50';
 const INITIAL_CART = [
     {
         id: '1',
-        name: 'Coxinha de Frango',
+        name: 'Hambúrguer de Frango',
         weight: '120 gm.',
         price: 6.0,
-        image: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=200&q=80',
+        image: require('../../assets/burguer.jpg'),
         discount: null,
         qty: 2,
     },
@@ -42,7 +42,7 @@ const INITIAL_CART = [
         name: 'Suco de Laranja',
         weight: '300 ml.',
         price: 8.0,
-        image: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=200&q=80',
+        image: require('../../assets/sucolaranj.jpg'),
         discount: 10,
         qty: 1,
     },
@@ -51,7 +51,7 @@ const INITIAL_CART = [
         name: 'Brownie de Chocolate',
         weight: '90 gm.',
         price: 7.0,
-        image: 'https://images.unsplash.com/photo-1564355808539-22fda35bed7e?w=200&q=80',
+        image: require('../../assets/brownie.jpg'),
         discount: 15,
         qty: 1,
     },
@@ -60,7 +60,7 @@ const INITIAL_CART = [
         name: 'Café Coado',
         weight: '200 ml.',
         price: 4.0,
-        image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&q=80',
+        image: require('../../assets/cafe.jpg'),
         discount: null,
         qty: 3,
     },
@@ -69,24 +69,24 @@ const INITIAL_CART = [
 const SUGGESTED = [
     {
         id: 's1',
-        name: 'Pão de Queijo',
+        name: 'Hambúrguer X',
         weight: '80 gm.',
         price: 5.0,
-        image: 'https://images.unsplash.com/photo-1598182198871-d3f4ab4fd181?w=200&q=80',
+        image: require('../../assets/burguer2.jpg'),
     },
     {
         id: 's2',
         name: 'Água Mineral',
         weight: '500 ml.',
         price: 3.5,
-        image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=200&q=80',
+        image: require('../../assets/agua.jpg'),
     },
     {
         id: 's3',
         name: 'Misto Quente',
         weight: '150 gm.',
         price: 9.5,
-        image: 'https://images.unsplash.com/photo-1528736235302-52922df5c122?w=200&q=80',
+        image: require('../../assets/misto.jpg'),
     },
 ];
 
@@ -101,7 +101,7 @@ function CartItem({ item, onIncrease, onDecrease, onRemove }) {
     return (
         <View style={styles.cartItem}>
             <View style={styles.cartItemImageWrap}>
-                <Image source={{ uri: item.image }} style={styles.cartItemImage} resizeMode="cover" />
+                <Image source={item.image} style={styles.cartItemImage} resizeMode="cover" />
                 {item.discount && (
                     <View style={styles.cartDiscountBadge}>
                         <Text style={styles.cartDiscountText}>{item.discount}%</Text>
@@ -153,7 +153,7 @@ function CartItem({ item, onIncrease, onDecrease, onRemove }) {
 function SuggestedCard({ item, onAdd }) {
     return (
         <View style={styles.suggestedCard}>
-            <Image source={{ uri: item.image }} style={styles.suggestedImage} resizeMode="cover" />
+            <Image source={item.image} style={styles.suggestedImage} resizeMode="cover" />
             <Text style={styles.suggestedName} numberOfLines={2}>{item.name}</Text>
             <Text style={styles.suggestedWeight}>{item.weight}</Text>
             <View style={styles.suggestedFooter}>
