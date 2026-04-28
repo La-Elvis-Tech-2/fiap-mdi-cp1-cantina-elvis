@@ -1,26 +1,25 @@
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { useEffect } from 'react';
+import { AuthProvider, useAuth } from '../../context/AuthContext';
+import { CartProvider } from '../../context/CartContext';
 import { View, ActivityIndicator } from 'react-native';
-import { AuthProvider, useAuth } from '../context/AuthContext';
-import { CartProvider } from '../context/CartContext';
-import { OrdersProvider } from '../context/Orderscontext';
 
-function RootGate() {
+function AuthGate() {
     const { user, loading } = useAuth();
-    const router = useRouter();
     const segments = useSegments();
+    const router = useRouter();
 
     useEffect(() => {
-        if (loading) return; // aguarda AsyncStorage
+        if (loading) return;
 
-        const inAuth = segments[0] === '(auth)';
+        const inAuthGroup = segments[0] === '(auth)';
 
-        if (!user && !inAuth) {
+        if (!user && !inAuthGroup) {
             router.replace('/(auth)/login');
-        } else if (user && inAuth) {
+        } else if (user && inAuthGroup) {
             router.replace('/(tabs)');
         }
-    }, [user, loading]);
+    }, [user, loading, segments]);
 
     if (loading) {
         return (
@@ -37,9 +36,7 @@ export default function RootLayout() {
     return (
         <AuthProvider>
             <CartProvider>
-                <OrdersProvider>
-                    <RootGate />
-                </OrdersProvider>
+                <AuthGate />
             </CartProvider>
         </AuthProvider>
     );
