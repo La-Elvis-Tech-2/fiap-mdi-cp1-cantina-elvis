@@ -48,7 +48,6 @@ O CP1 entregou um MVP visual com navegação, listagem de produtos e carrinho mo
 | rm555137 | Vitor Eskes |
 | rm554972 | Gustavo Morais |
 | rm555460 | Leonardo Rocha |
-| rm554807 | Leonardo Novaes |
 
 ---
 
