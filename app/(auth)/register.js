@@ -146,6 +146,7 @@ export default function RegisterScreen() {
         setLoading(true);
         try {
             await register({ name: name.trim(), email: email.trim(), password });
+            router.replace('/(tabs)');
         } catch (err) {
             setServerError(err.message);
             shake();

@@ -3,6 +3,7 @@ import {
     TouchableOpacity, ScrollView, Alert, ActivityIndicator,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { useOrders } from '../../context/Orderscontext';
@@ -34,6 +35,7 @@ function OrderHistoryItem({ order }) {
     const date = new Date(order.date);
     const formatted = date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
     const shortId = order.id.slice(-4).toUpperCase();
+    const totalQty = order.items.reduce((a, i) => a + i.qty, 0);
 
     return (
         <View style={styles.orderItem}>
@@ -43,9 +45,7 @@ function OrderHistoryItem({ order }) {
             <View style={styles.orderInfo}>
                 <Text style={styles.orderTitle}>Pedido #{shortId}</Text>
                 <Text style={styles.orderDate}>{formatted}</Text>
-                <Text style={styles.orderItems}>
-                    {order.items.reduce((a, i) => a + i.qty, 0)} {order.items.reduce((a, i) => a + i.qty, 0) === 1 ? 'item' : 'itens'}
-                </Text>
+                <Text style={styles.orderItems}>{totalQty} {totalQty === 1 ? 'item' : 'itens'}</Text>
             </View>
             <Text style={styles.orderTotal}>R${order.total.toFixed(2)}</Text>
         </View>
@@ -56,8 +56,11 @@ export default function ProfileScreen() {
     const { user, loading, logout } = useAuth();
     const { totalItems } = useCart();
     const { orders, totalSpent } = useOrders();
+    const router = useRouter();
 
-    if (loading || !user) {
+    // Mostra spinner só no carregamento inicial (app abrindo)
+    // Não bloqueia quando user já vem do login na mesma sessão
+    if (loading) {
         return (
             <SafeAreaView style={styles.safe}>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -67,12 +70,20 @@ export default function ProfileScreen() {
         );
     }
 
-    const initials = user.name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
+    // Usa optional chaining em tudo — nunca trava se user demorar 1 frame
+    const name = user?.name ?? '';
+    const email = user?.email ?? '';
+    const initials = name
+        ? name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase()
+        : '?';
 
     const handleLogout = () => {
         Alert.alert('Sair da conta', 'Tem certeza que deseja sair?', [
             { text: 'Cancelar', style: 'cancel' },
-            { text: 'Sair', style: 'destructive', onPress: logout },
+            { text: 'Sair', style: 'destructive', onPress: async () => {
+                await logout();
+                router.replace('/(auth)/login');
+            }},
         ]);
     };
 
@@ -84,18 +95,18 @@ export default function ProfileScreen() {
                 <View style={styles.header}>
                     <View style={styles.sectionTitleWrap}>
                         <View style={styles.sectionAccent} />
-                        <Text style={styles.headerTitle}>Conta</Text>
+                        <Text style={styles.headerTitle}>Perfil</Text>
                     </View>
                 </View>
 
-                {/* Avatar */}
+                {/* Avatar Card */}
                 <View style={styles.avatarCard}>
                     <View style={styles.avatar}>
                         <Text style={styles.avatarText}>{initials}</Text>
                     </View>
                     <View style={styles.avatarInfo}>
-                        <Text style={styles.userName}>{user.name}</Text>
-                        <Text style={styles.userEmail}>{user.email}</Text>
+                        <Text style={styles.userName}>{name || '—'}</Text>
+                        <Text style={styles.userEmail}>{email || '—'}</Text>
                         <View style={styles.userBadge}>
                             <Ionicons name="school-outline" size={12} color={PINK} />
                             <Text style={styles.userBadgeText}>Aluno FIAP</Text>
@@ -103,7 +114,7 @@ export default function ProfileScreen() {
                     </View>
                 </View>
 
-                {/* Stats — agora com dados reais */}
+                {/* Stats */}
                 <View style={styles.statsRow}>
                     <View style={styles.statCard}>
                         <Text style={styles.statValue}>{totalItems}</Text>
@@ -121,7 +132,7 @@ export default function ProfileScreen() {
                     </View>
                 </View>
 
-                {/* Histórico de pedidos */}
+                {/* Histórico */}
                 {orders.length > 0 && (
                     <View style={styles.menuSection}>
                         <Text style={styles.menuSectionLabel}>Histórico de pedidos</Text>
@@ -140,10 +151,6 @@ export default function ProfileScreen() {
                         </View>
                     </View>
                 )}
-
-             
-
-               
 
                 <View style={[styles.menuSection, { marginTop: 4 }]}>
                     <View style={styles.menuCard}>
@@ -185,7 +192,6 @@ const styles = StyleSheet.create({
     menuLabel: { fontSize: 14, fontWeight: '600', color: WHITE },
     menuValue: { fontSize: 12, color: MUTED, marginTop: 2 },
     menuDivider: { height: 1, backgroundColor: BORDER, marginLeft: 66 },
-    // Histórico
     orderItem: { flexDirection: 'row', alignItems: 'center', gap: 14, padding: 16 },
     orderIconWrap: { width: 36, height: 36, backgroundColor: '#1A2D1A', borderRadius: 11, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: GREEN + '44' },
     orderInfo: { flex: 1 },

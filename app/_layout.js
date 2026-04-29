@@ -7,20 +7,15 @@ import { OrdersProvider } from '../context/Orderscontext';
 
 function RootGate() {
     const { user, loading } = useAuth();
-    const router = useRouter();
     const segments = useSegments();
+    const router = useRouter();
 
     useEffect(() => {
-        if (loading) return; // aguarda AsyncStorage
-
+        if (loading) return;
         const inAuth = segments[0] === '(auth)';
-
-        if (!user && !inAuth) {
-            router.replace('/(auth)/login');
-        } else if (user && inAuth) {
-            router.replace('/(tabs)');
-        }
-    }, [user, loading]);
+        if (!user && !inAuth) router.replace('/(auth)/login');
+        else if (user && inAuth) router.replace('/(tabs)');
+    }, [user, loading, segments]);
 
     if (loading) {
         return (
