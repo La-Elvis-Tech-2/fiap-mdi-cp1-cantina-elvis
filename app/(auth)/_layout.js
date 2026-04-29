@@ -1,43 +1,5 @@
-import { Stack, useRouter, useSegments } from 'expo-router';
-import { useEffect } from 'react';
-import { AuthProvider, useAuth } from '../../context/AuthContext';
-import { CartProvider } from '../../context/CartContext';
-import { View, ActivityIndicator } from 'react-native';
+import { Stack } from 'expo-router';
 
-function AuthGate() {
-    const { user, loading } = useAuth();
-    const segments = useSegments();
-    const router = useRouter();
-
-    useEffect(() => {
-        if (loading) return;
-
-        const inAuthGroup = segments[0] === '(auth)';
-
-        if (!user && !inAuthGroup) {
-            router.replace('/(auth)/login');
-        } else if (user && inAuthGroup) {
-            router.replace('/(tabs)');
-        }
-    }, [user, loading, segments]);
-
-    if (loading) {
-        return (
-            <View style={{ flex: 1, backgroundColor: '#1A1A1A', alignItems: 'center', justifyContent: 'center' }}>
-                <ActivityIndicator color="#ED145B" size="large" />
-            </View>
-        );
-    }
-
+export default function AuthLayout() {
     return <Stack screenOptions={{ headerShown: false }} />;
-}
-
-export default function RootLayout() {
-    return (
-        <AuthProvider>
-            <CartProvider>
-                <AuthGate />
-            </CartProvider>
-        </AuthProvider>
-    );
 }

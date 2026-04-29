@@ -105,6 +105,7 @@ export default function LoginScreen() {
         setLoading(true);
         try {
             await login({ email: email.trim(), password });
+            router.replace('/(tabs)');
         } catch (err) {
             setServerError(err.message);
             shake();
