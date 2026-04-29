@@ -22,7 +22,7 @@ function CustomTabBar({ state, navigation }) {
                     };
                     return (
                         <TouchableOpacity key={route.key} onPress={onPress} style={styles.tabItem} activeOpacity={0.7}>
-                            <View style={[styles.pill, isFocused && styles.pillActive]}>
+                            <View style={isFocused ? styles.pillActive : styles.pill}>
                                 <View>
                                     <Ionicons name={icons[route.name]} size={22} color={isFocused ? PINK : '#555'} />
                                     {route.name === 'cart' && totalItems > 0 && (
@@ -31,6 +31,7 @@ function CustomTabBar({ state, navigation }) {
                                         </View>
                                     )}
                                 </View>
+                                {isFocused && <Text style={styles.labelActive}>{labels[route.name]}</Text>}
                             </View>
                         </TouchableOpacity>
                     );
@@ -40,7 +41,8 @@ function CustomTabBar({ state, navigation }) {
     );
 }
 
-// Sem useAuth aqui, sem redirect — quem controla é o RootGate no _layout.js raiz
+// SEM AuthProvider, SEM CartProvider, SEM useAuth aqui
+// Todos os providers já estão no app/_layout.js (root)
 export default function TabsLayout() {
     return (
         <Tabs tabBar={(props) => <CustomTabBar {...props} />} screenOptions={{ headerShown: false }}>
@@ -58,11 +60,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row', backgroundColor: '#222222', borderRadius: 30,
         height: 62, alignItems: 'center', justifyContent: 'space-around', paddingHorizontal: 8,
         borderWidth: 1, borderColor: '#333333',
-        shadowColor: '#000', shadowOpacity: 0.4, shadowRadius: 20, shadowOffset: { width: 0, height: 8 }, elevation: 12,
     },
     tabItem: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-    pill: { alignItems: 'center', justifyContent: 'center', paddingVertical: 8, paddingHorizontal: 12, borderRadius: 20, gap: 3 },
-    pillActive: { flexDirection: 'row', gap: 6, backgroundColor: '#2D1120', borderWidth: 1, borderColor: '#4A1A30', borderRadius: 30, paddingVertical: 6, paddingHorizontal: 12, alignItems: 'center', justifyContent: 'center' },
+    pill: { alignItems: 'center', justifyContent: 'center', paddingVertical: 6, paddingHorizontal: 12, borderRadius: 30 },
+    pillActive: {
+        flexDirection: 'row', gap: 6, alignItems: 'center', justifyContent: 'center',
+        backgroundColor: '#2D1120', borderWidth: 1, borderColor: '#4A1A30',
+        borderRadius: 30, paddingVertical: 6, paddingHorizontal: 12,
+    },
     badge: {
         position: 'absolute', top: -4, right: -8, backgroundColor: PINK, borderRadius: 10,
         minWidth: 16, height: 16, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 3,
