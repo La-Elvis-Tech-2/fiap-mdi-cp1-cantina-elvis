@@ -90,20 +90,20 @@ O CP1 entregou um MVP visual com navegação, listagem de produtos e carrinho mo
 
 > ⚠️ Prints e vídeo do CP2 serão adicionados após gravação final.
 
-**Vídeo CP1:**
+**Vídeo CP2:**
 ```
-https://drive.google.com/file/d/1ZV21PdYRzNtT873EztZULRHIL_Edf_PY/view?usp=sharing
+https://drive.google.com/file/d/1sz6W-ExHNLkXrRRPb7cqUXV7iJAC_7KP/view?usp=sharing
 ```
 
-**Prints CP1:**
+**Prints CP2:**
 
-<img width="385" height="839" alt="image" src="https://github.com/user-attachments/assets/ecae6aba-77a1-4f5f-aaa9-a6356d728fc6" />
-<img width="388" height="829" alt="image" src="https://github.com/user-attachments/assets/ddc80f2c-c048-43e1-8ab8-18c70637657c" />
-<img width="386" height="839" alt="image" src="https://github.com/user-attachments/assets/dab6b19c-41fd-45be-a9f9-6fe8e1eb383d" />
-<img width="386" height="831" alt="image" src="https://github.com/user-attachments/assets/4e6b4e95-fbf7-4982-b275-95fc1f3c0f37" />
-<img width="386" height="833" alt="image" src="https://github.com/user-attachments/assets/6cfab35e-b075-4e75-a898-c6161c2709c8" />
-<img width="388" height="838" alt="image" src="https://github.com/user-attachments/assets/7c4caeae-b08c-42fc-a11b-df284608195d" />
-<img width="386" height="834" alt="image" src="https://github.com/user-attachments/assets/b96e4056-8dd6-4a7a-b23c-64c8eb394d71" />
+<img width="200" alt="Login" src="https://github.com/user-attachments/assets/ecae6aba-77a1-4f5f-aaa9-a6356d728fc6" />
+<img width="200" alt="Cadastro" src="https://github.com/user-attachments/assets/ddc80f2c-c048-43e1-8ab8-18c70637657c" />
+<img width="200" alt="Home" src="https://github.com/user-attachments/assets/dab6b19c-41fd-45be-a9f9-6fe8e1eb383d" />
+<img width="200" alt="Busca" src="https://github.com/user-attachments/assets/4e6b4e95-fbf7-4982-b275-95fc1f3c0f37" />
+<img width="200" alt="Carrinho" src="https://github.com/user-attachments/assets/6cfab35e-b075-4e75-a898-c6161c2709c8" />
+<img width="200" alt="Pedido confirmado" src="https://github.com/user-attachments/assets/7c4caeae-b08c-42fc-a11b-df284608195d" />
+<img width="200" alt="Perfil" src="https://github.com/user-attachments/assets/b96e4056-8dd6-4a7a-b23c-64c8eb394d71" />
 
 ---
 
