@@ -88,14 +88,13 @@ O CP1 entregou um MVP visual com navegação, listagem de produtos e carrinho mo
 
 ## Demonstração Visual
 
-> ⚠️ Prints e vídeo do CP2 serão adicionados após gravação final.
 
-**Vídeo CP2:**
+**Vídeo:**
 ```
 https://drive.google.com/file/d/1sz6W-ExHNLkXrRRPb7cqUXV7iJAC_7KP/view?usp=sharing
 ```
 
-**Prints CP2:**
+**Prints:**
 
 <img width="200" alt="Login" src="https://github.com/user-attachments/assets/ecae6aba-77a1-4f5f-aaa9-a6356d728fc6" />
 <img width="200" alt="Cadastro" src="https://github.com/user-attachments/assets/ddc80f2c-c048-43e1-8ab8-18c70637657c" />
